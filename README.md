@@ -9,6 +9,6 @@ See also: https://arxiv.org/abs/2305.08710
 # Install
 In order to use the build script you need an Anaconda installation and gsl version 2.4 or higher (https://www.gnu.org/software/gsl/)   
 ```
-.\build.sh   
+./build.sh   
 conda activate EASpy
 ```
