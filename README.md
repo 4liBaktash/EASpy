@@ -1,4 +1,5 @@
-# EASpy  
+# EASpy 
+![](fl_ch_sketch.png)   
 Simulation of extenden air showers at large zenith angles based on parametrizations
 for electron-positron distributions and its consequent emission of fluorescence and Cherenkov
 light in a analytical way while taking into account the curvature of Earth’s atmosphere.   
