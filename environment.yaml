@@ -1,0 +1,14 @@
+name: EASpy
+channels:
+  - default
+  - conda-forge
+dependencies:
+  - python=3.9.12
+  - jupyter
+  - ipython
+  - matplotlib=3.3.4
+  - numpy=1.20.3
+  - pandas=1.4.2
+  - scipy=1.9.1
+  - numba=0.55.1
+  
