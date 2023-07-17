@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
 import os
 import configparser
 
@@ -152,7 +153,7 @@ class Shower:
         
         dim = (len(cfg.prf_t), len(cfg.rbins_mid), cfg.Nvoxel)
         rbins = cfg.rbins_mid
-        abins = np.linspace(0., 2.*np.pi, cfg.Nvoxel, endpoint=False)
+        abins = np.linspace(0., 2.*np.pi, cfg.Nvoxel, endpoint=True)
         A, R = np.meshgrid(abins, rbins)
 
         fig, axs = plt.subplots(1,2, subplot_kw=dict(projection="polar"))
@@ -160,10 +161,10 @@ class Shower:
         axs[1].grid(False)
         
         pc1 = axs[0].pcolormesh(A, R, np.sum(Nph_tot.reshape(dim), axis = 0),
-                                cmap="magma_r", norm = LogNorm())
+                                cmap="magma_r", norm = LogNorm(), shading = "auto")
 
         pc2 = axs[1].pcolormesh(A, R, np.sum(Nph_sphere.reshape(dim), axis = 0), 
-                                cmap="magma_r", norm = LogNorm())
+                                cmap="magma_r", norm = LogNorm(), shading = "auto")
 
         axs[0].set_yticklabels([])
         axs[1].set_yticklabels([])

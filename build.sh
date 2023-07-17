@@ -25,10 +25,6 @@ echo "Creating conda evironment..."
 
 conda env create -f environment.yaml
 
-echo "Checking for gsl libraries..."
-gsl-config --libs
-echo $"gsl version installed: $(gsl-config --version)"
-
 echo '************************************************************************'
 echo '*'
 echo "* Building EASpy shared library"

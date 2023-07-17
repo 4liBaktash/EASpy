@@ -1,3 +1,4 @@
 src/__pycache__/
 src/C_routines/*.o
 src/C_routines/*.so
+.ipynb_checkpoints/
