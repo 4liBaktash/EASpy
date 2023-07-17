@@ -130,7 +130,7 @@ class ConfigShower:
         if(not os.path.isfile(path)):
             raise Exception('Invalid path to vertical atmospheric profile file: %s' % path)
 
-        resu = pd.read_csv(path, skiprows = 3, delimiter= '\s+', index_col=False, 
+        resu = pd.read_csv(path, comment = '#', delimiter= '\s+', index_col=False, 
                            names=['h', 'rho', 'X', 'n-1', 'T', 'P', 'Pw/P'])
         return resu
 
@@ -144,7 +144,7 @@ class ConfigShower:
         if(not os.path.isfile(path)):
             raise Exception('Invalid path to atmospheric absorbtion file: %s' % path)
             
-        resu = pd.read_csv(path, delimiter= '\s+', index_col=False)
+        resu = pd.read_csv(path, comment = '#', delimiter= '\s+', index_col=False)
         
         return resu
     
@@ -155,7 +155,7 @@ class ConfigShower:
         path = str, path to wavelength dependent quantum efficiency file
         """
         
-        resu = pd.read_csv(path, skiprows = 15, usecols = [0,1], delimiter= '\s+', 
+        resu = pd.read_csv(path, comment = '#', usecols = [0,1], delimiter= '\s+', 
                            index_col=False, names=['wvl', 'qe'])
         
         return resu
@@ -167,7 +167,7 @@ class ConfigShower:
         path = str, path to wavelength dependent mirror reflectivity file
         """
         
-        resu = pd.read_csv(path, skiprows = 1, usecols = [0,1], delimiter= '\s+', 
+        resu = pd.read_csv(path, comment = '#', usecols = [0,1], delimiter= '\s+', 
                            index_col=False, names=['wvl', 'reflectivity'])
         
         return resu
@@ -179,7 +179,7 @@ class ConfigShower:
         path = str, path to wavelength dependent camera filter file
         """
         
-        resu = pd.read_csv(path, skiprows = 3, usecols = [0,1], delimiter= '\s+', 
+        resu = pd.read_csv(path, comment = '#', usecols = [0,1], delimiter= '\s+', 
                            index_col=False, names=['wvl', 'eff'])
         
         return resu
@@ -191,7 +191,7 @@ class ConfigShower:
         path = str, path to PSF file
         """
         
-        resu = pd.read_csv(path, skiprows = 1, delimiter='\s+', index_col=False,
+        resu = pd.read_csv(path, comment = '#', delimiter='\s+', index_col=False,
                            names=['off_axis_angle', 'r68'])
         
         return resu 
@@ -238,7 +238,7 @@ class ConfigShower:
     def get_corsika_data(self, config):
         run = config.getint("shower", "run")
         shower = config.getint("shower", "shower")
-        path = glob.glob(f"profile_lib/{run}/{shower}_*")
+        path = glob.glob(f"example/profile_lib/{run}/{shower}_*")
         data = np.load(path[0])
         corsika_xsteps = config.getfloat("shower", "corsika_xsteps")
         
@@ -251,8 +251,8 @@ class ConfigShower:
         
         print("### Loaded profile for:")
         print(f"### zenith: {data['zenith']}")
-        print(f"### energy: {data['energy']}")
-        print(f"### height of first interaction: {data['height']}")
+        print(f"### energy: {data['energy']} TeV")
+        print(f"### height of first interaction: {data['height']} km")
            
         return
     
@@ -302,7 +302,7 @@ class ConfigShower:
         
         self.pix_FoV = np.rad2deg(2.*np.arctan(0.5*self.pix_width/self.focal_length))
         cm_to_deg = self.pix_FoV/self.pix_width
-        pixel_list = np.loadtxt(path, skiprows=6, usecols=(3,4))
+        pixel_list = np.loadtxt(path, comments='#', usecols=(3,4))
         
         self.CamAlt = pixel_list[:, 0] * cm_to_deg
         self.CamAz = pixel_list[:, 1] * cm_to_deg
@@ -339,7 +339,7 @@ class ConfigShower:
         Xmax_index = np.where(self.prf_t == 0.)[0][0]
     
         resu = "#### Starting with shower ####\n"\
-        f"Shower age range: [{self.tmin}, {self.tmax}]\n"\
+        f"Shower stage range: [{self.tmin}, {self.tmax}] in units of X_0\n"\
         "\n"\
         f"Energy range of particles: [{np.min(self.Ebins):.2e}, {np.max(self.Ebins):.2e}] MeV\n"\
         "\n"\
