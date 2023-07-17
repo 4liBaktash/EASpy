@@ -8,8 +8,14 @@ See also: https://arxiv.org/abs/2305.08710
 
 
 # Install
-In order to use the build script you need an Anaconda installation and gsl version 2.4 or higher (https://www.gnu.org/software/gsl/)   
+In order to use the build script you need an Anaconda installation 
 ```
 ./build.sh   
 conda activate EASpy
+```
+# Example
+In order to run the example in example.ipynb you must first execute get_example_data.sh
+```
+cd example/example_data
+./get_example_data.sh
 ```
