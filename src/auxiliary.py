@@ -87,7 +87,9 @@ def neighbours(x,y):
 
 
 def eig_2d(matrix):
-    """ calculate the eigenvalues and eigenvectors of 2d matrices.
+    """ 
+        This code was kindly provided by Micheal Blanc.
+        calculate the eigenvalues and eigenvectors of 2d matrices.
         Returns (eigenvalues, eigenvectors)
     """
     a = matrix[..., 0, 0]
@@ -191,8 +193,8 @@ def plot_iact_image(image,
                     sizehex=0.03,
                     orient=0.):
     """
-    Plot the image of an TAIGA IACT event.
-
+    This code was kindly provided by Micheal Blanc.
+    Original code snippet is from https://github.com/fact-project/pyfact
     """
     # Based on the camera implementation in pyfact
     if ax is None:
