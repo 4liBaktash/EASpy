@@ -88,7 +88,7 @@ def neighbours(x,y):
 
 def eig_2d(matrix):
     """ 
-        This code was kindly provided by Micheal Blanc.
+        This code was kindly provided by Micheal Blank.
         calculate the eigenvalues and eigenvectors of 2d matrices.
         Returns (eigenvalues, eigenvectors)
     """
@@ -193,7 +193,7 @@ def plot_iact_image(image,
                     sizehex=0.03,
                     orient=0.):
     """
-    This code was kindly provided by Micheal Blanc.
+    This code was kindly provided by Micheal Blank.
     Original code snippet is from https://github.com/fact-project/pyfact
     """
     # Based on the camera implementation in pyfact
