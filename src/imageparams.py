@@ -37,7 +37,10 @@ class ImageParams:
     
     @property
     def calc_HillasParams(self):
-
+        """
+        This code was kindly provided by Micheal Blanc.
+        Basic Hillas analysis.
+        """
         ny = self._pixel_pos[0] #np.tile(self._pixel_pos, len(self._pixel_pos))
         nx = self._pixel_pos[1] #np.repeat(self._pixel_pos, len(self._pixel_pos))
         na = self._image_cleaned #self._image_cleaned.ravel()
