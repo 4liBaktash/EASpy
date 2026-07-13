@@ -4,7 +4,7 @@
 Simulation of extenden air showers at large zenith angles based on parametrizations
 for electron-positron distributions and its consequent emission of fluorescence and Cherenkov
 light in a analytical way while taking into account the curvature of Earth’s atmosphere.   
-See also: https://arxiv.org/abs/2305.08710   
+See also: https://iopscience.iop.org/article/10.1088/1748-0221/18/08/P08018
 
 
 # Install
